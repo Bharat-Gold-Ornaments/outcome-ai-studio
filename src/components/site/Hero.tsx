@@ -1,61 +1,160 @@
-import { CallCta, Reveal } from "./primitives";
-import heroImage from "@/assets/hero-system.jpg";
+import { CallCta, Kicker, useInView } from "./primitives";
 
-const ticker = ["AI Consulting", "AI Automation", "AI Training", "Sales", "Marketing", "Customer Service"];
+function SystemDiagram() {
+  const [ref, inView] = useInView<HTMLDivElement>({ threshold: 0.2 });
+
+  const inputs = [
+    { label: "Sales", y: 46 },
+    { label: "Marketing", y: 130 },
+    { label: "Customer Service", y: 214 },
+  ];
+  const results = [
+    { label: "More leads", y: 56 },
+    { label: "Faster response", y: 130 },
+    { label: "Less repetitive work", y: 204 },
+  ];
+
+  return (
+    <div ref={ref} className="w-full">
+      <svg
+        viewBox="0 0 1010 260"
+        role="img"
+        aria-label="Diagram: Sales, Marketing and Customer Service feed into AI, then automation, producing business results"
+        className={`h-auto w-full ${inView ? "is-live" : ""}`}
+      >
+        <g className="font-mono">
+          {/* input labels */}
+          {inputs.map((n, i) => (
+            <g key={n.label} className="node" style={{ ["--d" as string]: `${i * 160}ms` }}>
+              <text
+                x="0"
+                y={n.y}
+                fill="currentColor"
+                fontSize="13"
+                letterSpacing="2.4"
+                style={{ textTransform: "uppercase" }}
+              >
+                {n.label.toUpperCase()}
+              </text>
+              <circle cx="200" cy={n.y - 5} r="3.5" fill="var(--accent)" />
+            </g>
+          ))}
+
+          {/* input → AI */}
+          {inputs.map((n, i) => (
+            <path
+              key={`in-${n.label}`}
+              className="wire"
+              style={{ ["--d" as string]: `${300 + i * 160}ms` }}
+              d={`M204 ${n.y - 5} C 300 ${n.y - 5}, 320 130, 396 130`}
+              fill="none"
+              stroke="var(--accent)"
+              strokeOpacity="0.55"
+              strokeWidth="1"
+            />
+          ))}
+
+          {/* AI core */}
+          <g className="node" style={{ ["--d" as string]: "760ms" }}>
+            <circle cx="440" cy="130" r="44" fill="none" stroke="currentColor" strokeOpacity="0.2" />
+            <circle
+              cx="440"
+              cy="130"
+              r="58"
+              fill="none"
+              stroke="var(--accent)"
+              strokeOpacity="0.25"
+              strokeDasharray="2 8"
+              className="motion-safe:animate-[spin_36s_linear_infinite] origin-[440px_130px]"
+            />
+            <text
+              x="440"
+              y="136"
+              textAnchor="middle"
+              fill="currentColor"
+              fontSize="20"
+              letterSpacing="3"
+            >
+              AI
+            </text>
+          </g>
+
+          {/* AI → automation */}
+          <path
+            className="wire"
+            style={{ ["--d" as string]: "900ms" }}
+            d="M498 130 H 592"
+            fill="none"
+            stroke="var(--accent)"
+            strokeWidth="1"
+          />
+          <g className="node" style={{ ["--d" as string]: "1040ms" }}>
+            <text x="596" y="126" fill="currentColor" fontSize="12" letterSpacing="2.4">
+              AUTOMATION
+            </text>
+            <line x1="596" y1="140" x2="686" y2="140" stroke="var(--accent)" strokeOpacity="0.5" />
+          </g>
+
+          {/* automation → results */}
+          {results.map((r, i) => (
+            <g key={r.label}>
+              <path
+                className="wire"
+                style={{ ["--d" as string]: `${1140 + i * 140}ms` }}
+                d={`M690 140 C 720 140, 720 ${r.y - 5}, 748 ${r.y - 5}`}
+                fill="none"
+                stroke="currentColor"
+                strokeOpacity="0.25"
+                strokeWidth="1"
+              />
+              <g className="node" style={{ ["--d" as string]: `${1240 + i * 140}ms` }}>
+                <text x="756" y={r.y} fill="currentColor" fillOpacity="0.6" fontSize="11" letterSpacing="1.6">
+                  {r.label.toUpperCase()}
+                </text>
+              </g>
+            </g>
+          ))}
+        </g>
+      </svg>
+    </div>
+  );
+}
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden px-6 pt-14 pb-16 md:px-10 md:pt-20 md:pb-20">
-      <div className="grid-paper pointer-events-none absolute inset-0 opacity-60 [mask-image:radial-gradient(70%_60%_at_50%_0%,black,transparent)]" />
-      <div className="relative mx-auto grid w-full max-w-6xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-        <div>
-          <Reveal>
-            <p className="text-eyebrow text-accent">AI Consulting &middot; Automation &middot; Training</p>
-            <h1 className="mt-6 font-display text-[2.7rem] leading-[1.02] tracking-tight text-balance md:text-[4.25rem]">
-              Practical AI for Business.
-            </h1>
-            <p className="mt-6 max-w-xl font-display text-xl leading-snug text-foreground/85 md:text-2xl">
-              Identify where AI can create value. Automate repetitive work. Help your team work
-              smarter.
-            </p>
-          </Reveal>
+    <section
+      id="top"
+      className="relative flex min-h-[82vh] flex-col justify-center px-6 pt-16 pb-14 md:px-10"
+    >
+      <div className="mx-auto w-full max-w-6xl">
+        <Kicker>AI Consulting &middot; Automation &middot; Training</Kicker>
 
-          <Reveal delay={120}>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <CallCta />
-              <a
-                href="#what-we-do"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-ink/20 px-6 text-sm font-medium tracking-tight transition-colors hover:border-accent hover:text-accent"
-              >
-                What We Do
-              </a>
-            </div>
-          </Reveal>
+        <h1 className="mt-10 max-w-4xl font-display text-[3rem] leading-[0.96] tracking-[-0.03em] text-balance sm:text-[4.5rem] lg:text-[5.5rem]">
+          Practical AI.
+          <br />
+          <span className="text-muted-foreground">Built around your business.</span>
+        </h1>
+
+        <p className="mt-10 max-w-xl text-lg leading-relaxed text-muted-foreground">
+          We identify the right opportunities, build the systems and help your team put them to
+          work.
+        </p>
+
+        <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4">
+          <CallCta />
+          <a
+            href="#work"
+            className="group inline-flex items-center gap-3 text-sm font-medium tracking-tight transition-colors hover:text-accent"
+          >
+            Explore
+            <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-y-1">
+              &darr;
+            </span>
+          </a>
         </div>
 
-        <Reveal delay={160} className="lg:pl-6">
-          <figure className="float-slow overflow-hidden rounded-2xl border border-border bg-card shadow-lift">
-            <img
-              src={heroImage}
-              alt="Everyday business work connected into one intelligent, supervised AI workflow"
-              width={1280}
-              height={1104}
-              className="h-full w-full object-cover"
-            />
-          </figure>
-        </Reveal>
-      </div>
-
-      <div className="relative mt-14 overflow-hidden border-y border-border py-4 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
-        <div className="marquee-track gap-10 font-mono text-[11px] tracking-[0.22em] uppercase text-muted-foreground">
-          {[...ticker, ...ticker, ...ticker, ...ticker].map((t, i) => (
-            <span key={`${t}-${i}`} className="flex items-center gap-10 whitespace-nowrap">
-              {t}
-              <span aria-hidden="true" className="text-accent">
-                &bull;
-              </span>
-            </span>
-          ))}
+        <div className="mt-20 border-t border-border pt-12 text-foreground">
+          <SystemDiagram />
         </div>
       </div>
     </section>

@@ -1,74 +1,85 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode, type RefObject } from "react";
 import { cn } from "@/lib/utils";
 import { site } from "@/config/site";
 
-export function Reveal({
-  children,
-  delay = 0,
-  className,
-}: {
-  children: ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
+/** True once the element has scrolled into view. */
+export function useInView<T extends HTMLElement>(
+  options?: IntersectionObserverInit,
+): [RefObject<T | null>, boolean] {
+  const ref = useRef<T>(null);
+  const [inView, setInView] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     if (typeof IntersectionObserver === "undefined") {
-      setShown(true);
+      setInView(true);
       return;
     }
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
           if (e.isIntersecting) {
-            setShown(true);
+            setInView(true);
             io.disconnect();
           }
         }
       },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0.05 },
+      options ?? { rootMargin: "0px 0px -15% 0px", threshold: 0.15 },
     );
     io.observe(el);
     return () => io.disconnect();
-  }, []);
+  }, [options]);
+
+  return [ref, inView];
+}
+
+export function Reveal({
+  children,
+  delay = 0,
+  className,
+  as: As = "div",
+}: {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+  as?: "div" | "span" | "li";
+}) {
+  const [ref, inView] = useInView<HTMLDivElement>();
 
   return (
-    <div
-      ref={ref}
+    <As
+      ref={ref as never}
       style={{ transitionDelay: `${delay}ms` }}
       className={cn(
-        "transition-all duration-700 ease-out motion-reduce:transition-none",
-        shown ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
+        "transition-all duration-[900ms] ease-out motion-reduce:transition-none",
+        inView ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",
         className,
       )}
     >
       {children}
-    </div>
+    </As>
   );
 }
 
-export function Section({
+export function Band({
   id,
   children,
   className,
-  tone = "base",
+  tone = "light",
 }: {
   id?: string;
   children: ReactNode;
   className?: string;
-  tone?: "base" | "raised" | "ink";
+  tone?: "light" | "dark";
 }) {
   return (
     <section
       id={id}
       className={cn(
-        "scroll-mt-20 border-t border-border/70 px-6 py-20 md:px-10 md:py-28",
-        tone === "raised" && "bg-card",
-        tone === "ink" && "bg-ink text-ink-foreground border-ink",
+        "relative scroll-mt-24 px-6 py-24 md:px-10 md:py-32",
+        tone === "light" && "border-t border-border bg-background",
+        tone === "dark" && "border-t border-ink bg-ink text-ink-foreground",
         className,
       )}
     >
@@ -77,36 +88,17 @@ export function Section({
   );
 }
 
-export function Eyebrow({ children }: { children: ReactNode }) {
+export function Kicker({ children, tone = "accent" }: { children: ReactNode; tone?: "accent" | "muted" }) {
   return (
-    <p className="text-eyebrow text-accent">
-      <span className="inline-block h-px w-8 translate-y-[-4px] bg-accent/60 align-middle" />{" "}
+    <p
+      className={cn(
+        "text-eyebrow flex items-center gap-3",
+        tone === "accent" ? "text-accent" : "text-muted-foreground",
+      )}
+    >
+      <span aria-hidden="true" className="inline-block h-px w-8 bg-current opacity-50" />
       {children}
     </p>
-  );
-}
-
-export function SectionHead({
-  eyebrow,
-  title,
-  lead,
-  align = "left",
-}: {
-  eyebrow?: string;
-  title: ReactNode;
-  lead?: ReactNode;
-  align?: "left" | "center";
-}) {
-  return (
-    <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center")}>
-      {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-      <h2 className="mt-5 font-display text-3xl leading-[1.1] tracking-tight text-balance md:text-5xl">
-        {title}
-      </h2>
-      {lead ? (
-        <p className="mt-5 text-lg leading-relaxed text-muted-foreground md:text-xl">{lead}</p>
-      ) : null}
-    </div>
   );
 }
 
@@ -116,7 +108,7 @@ export function CallCta({
   className,
 }: {
   children?: ReactNode;
-  variant?: "solid" | "outline" | "light";
+  variant?: "solid" | "quiet" | "light";
   className?: string;
 }) {
   return (
@@ -125,71 +117,20 @@ export function CallCta({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-sm font-medium tracking-tight transition-all duration-300",
-        variant === "solid" &&
-          "bg-ink text-ink-foreground hover:bg-accent hover:shadow-lift",
-        variant === "outline" &&
-          "border border-ink/20 text-foreground hover:border-accent hover:text-accent",
-        variant === "light" &&
-          "bg-ink-foreground text-ink hover:bg-accent hover:text-ink-foreground",
+        "group inline-flex min-h-12 items-center gap-3 px-6 text-sm font-medium tracking-tight transition-colors duration-300",
+        variant === "solid" && "rounded-full bg-ink text-ink-foreground hover:bg-accent",
+        variant === "light" && "rounded-full bg-ink-foreground text-ink hover:bg-accent hover:text-ink-foreground",
+        variant === "quiet" && "px-0 text-foreground hover:text-accent",
         className,
       )}
     >
       {children ?? site.ctaLabel}
-      <span aria-hidden="true">&rarr;</span>
+      <span
+        aria-hidden="true"
+        className="transition-transform duration-300 group-hover:translate-x-1"
+      >
+        &rarr;
+      </span>
     </a>
-  );
-}
-
-export function Pill({ children }: { children: ReactNode }) {
-  return (
-    <span className="rounded-full border border-border bg-card px-3 py-1 text-xs tracking-wide text-muted-foreground">
-      {children}
-    </span>
-  );
-}
-
-export function FocusTriad({ tone = "base" }: { tone?: "base" | "ink" }) {
-  const items = ["Sales", "Marketing", "Customer Service"];
-  return (
-    <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-      {items.map((i) => (
-        <span
-          key={i}
-          className={cn(
-            "font-display text-sm tracking-[0.18em] uppercase",
-            tone === "ink" ? "text-ink-foreground/80" : "text-foreground/80",
-          )}
-        >
-          {i}
-        </span>
-      ))}
-    </div>
-  );
-}
-
-export function FlowList({
-  steps,
-  tone = "base",
-}: {
-  steps: string[];
-  tone?: "base" | "accent";
-}) {
-  return (
-    <ol className="space-y-1.5">
-      {steps.map((s, i) => (
-        <li key={s} className="flex items-start gap-3">
-          <span
-            className={cn(
-              "mt-1 font-mono text-[11px] tabular-nums",
-              tone === "accent" ? "text-accent" : "text-muted-foreground",
-            )}
-          >
-            {String(i + 1).padStart(2, "0")}
-          </span>
-          <span className="text-sm leading-relaxed text-foreground/85">{s}</span>
-        </li>
-      ))}
-    </ol>
   );
 }
