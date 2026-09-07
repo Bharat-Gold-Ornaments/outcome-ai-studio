@@ -1,115 +1,5 @@
 import { CallCta, Reveal } from "./primitives";
-
-function WorkflowGraphic() {
-  return (
-    <svg
-      viewBox="0 0 420 320"
-      role="img"
-      aria-label="Abstract diagram of a business workflow becoming an intelligent system"
-      className="h-auto w-full"
-    >
-      <defs>
-        <linearGradient id="heroLine" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="currentColor" stopOpacity="0.15" />
-          <stop offset="55%" stopColor="var(--accent)" stopOpacity="0.85" />
-          <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.35" />
-        </linearGradient>
-      </defs>
-
-      {/* left: scattered manual steps */}
-      {[40, 96, 152, 208, 264].map((y, i) => (
-        <g key={y} className="text-foreground">
-          <rect
-            x={14 + (i % 2) * 10}
-            y={y}
-            width="86"
-            height="30"
-            rx="6"
-            fill="none"
-            stroke="currentColor"
-            strokeOpacity="0.22"
-          />
-          <line
-            x1={26 + (i % 2) * 10}
-            y1={y + 12}
-            x2={70 + (i % 2) * 10}
-            y2={y + 12}
-            stroke="currentColor"
-            strokeOpacity="0.2"
-          />
-          <line
-            x1={26 + (i % 2) * 10}
-            y1={y + 20}
-            x2={54 + (i % 2) * 10}
-            y2={y + 20}
-            stroke="currentColor"
-            strokeOpacity="0.14"
-          />
-        </g>
-      ))}
-
-      {/* converging connectors */}
-      {[55, 111, 167, 223, 279].map((y) => (
-        <path
-          key={y}
-          d={`M110 ${y} C 165 ${y}, 175 160, 232 160`}
-          fill="none"
-          stroke="url(#heroLine)"
-          strokeWidth="1.4"
-        />
-      ))}
-
-      {/* core system node */}
-      <g>
-        <circle
-          cx="252"
-          cy="160"
-          r="34"
-          fill="none"
-          stroke="var(--accent)"
-          strokeOpacity="0.35"
-        />
-        <circle cx="252" cy="160" r="20" fill="var(--accent)" fillOpacity="0.12" />
-        <circle cx="252" cy="160" r="5" fill="var(--accent)" />
-        <circle
-          cx="252"
-          cy="160"
-          r="46"
-          fill="none"
-          stroke="var(--accent)"
-          strokeOpacity="0.16"
-          strokeDasharray="3 7"
-          className="origin-[252px_160px] motion-safe:animate-[spin_28s_linear_infinite]"
-        />
-      </g>
-
-      {/* right: clean outputs */}
-      {[76, 148, 220].map((y, i) => (
-        <g key={y} className="text-foreground">
-          <path
-            d={`M298 160 C 330 160, 330 ${y + 15}, 350 ${y + 15}`}
-            fill="none"
-            stroke="var(--accent)"
-            strokeOpacity="0.4"
-            strokeWidth="1.4"
-          />
-          <rect
-            x="348"
-            y={y}
-            width="58"
-            height="30"
-            rx="6"
-            fill="var(--card)"
-            stroke="var(--accent)"
-            strokeOpacity={0.45 - i * 0.08}
-          />
-          <line x1="358" y1={y + 12} x2="396" y2={y + 12} stroke="currentColor" strokeOpacity="0.28" />
-          <line x1="358" y1={y + 20} x2="380" y2={y + 20} stroke="currentColor" strokeOpacity="0.18" />
-        </g>
-      ))}
-    </svg>
-  );
-}
+import heroImage from "@/assets/hero-system.jpg";
 
 export function Hero() {
   return (
@@ -126,34 +16,23 @@ export function Hero() {
               Identify where AI can create value. Automate repetitive work. Help your team work
               smarter.
             </p>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              We help businesses discover, implement and improve practical AI systems across Sales,
-              Marketing and Customer Service.
-            </p>
           </Reveal>
 
           <Reveal delay={120}>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <CallCta />
               <a
-                href="#how-it-works"
+                href="#what-we-do"
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-ink/20 px-6 text-sm font-medium tracking-tight transition-colors hover:border-accent hover:text-accent"
               >
-                See How It Works
+                What We Do
               </a>
             </div>
           </Reveal>
 
           <Reveal delay={200}>
             <div className="mt-10 border-t border-border pt-6">
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[11px] tracking-[0.16em] uppercase text-muted-foreground">
-                <span>AI Consulting</span>
-                <span className="text-accent">&bull;</span>
-                <span>AI Automation</span>
-                <span className="text-accent">&bull;</span>
-                <span>AI Training</span>
-              </div>
-              <dl className="mt-6 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-3">
+              <dl className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-3">
                 {[
                   ["Sales", "More enquiries converted"],
                   ["Marketing", "Faster content and research"],
@@ -170,19 +49,20 @@ export function Hero() {
         </div>
 
         <Reveal delay={160} className="lg:pl-6">
-          <div className="rounded-2xl border border-border bg-card p-6 shadow-lift md:p-8">
-            <div className="flex items-center justify-between font-mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground">
+          <figure className="overflow-hidden rounded-2xl border border-border bg-card shadow-lift">
+            <img
+              src={heroImage}
+              alt="Everyday business work connected into one intelligent, supervised AI workflow"
+              width={1280}
+              height={1104}
+              className="h-full w-full object-cover"
+            />
+            <figcaption className="flex items-center justify-between gap-4 border-t border-border px-6 py-4 font-mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground">
               <span>Manual process</span>
+              <span aria-hidden="true" className="h-px flex-1 bg-accent/40" />
               <span className="text-accent">Intelligent system</span>
-            </div>
-            <div className="mt-6 text-foreground">
-              <WorkflowGraphic />
-            </div>
-            <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
-              Illustrative representation of how fragmented manual work is consolidated into a
-              designed, supervised AI workflow.
-            </p>
-          </div>
+            </figcaption>
+          </figure>
         </Reveal>
       </div>
     </section>
