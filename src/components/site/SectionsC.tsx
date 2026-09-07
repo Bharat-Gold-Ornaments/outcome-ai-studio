@@ -6,59 +6,6 @@ import {
 } from "@/components/ui/accordion";
 import { CallCta, Reveal, Section, SectionHead } from "./primitives";
 
-export function ExampleWorkflow() {
-  const flow = [
-    "Customer enquiry",
-    "AI understands request",
-    "AI classifies enquiry",
-    "Information retrieved",
-    "Response prepared",
-    "Human approval where required",
-    "Customer response",
-    "Follow-up",
-    "Sales team notified",
-  ];
-
-  return (
-    <Section id="example-workflow">
-      <Reveal>
-        <SectionHead
-          eyebrow="Example workflow"
-          title="From repetitive process to intelligent workflow."
-          lead="A simplified illustration of how an everyday enquiry becomes a designed, supervised workflow."
-        />
-      </Reveal>
-
-      <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {flow.map((step, i) => (
-          <Reveal key={step} delay={i * 60}>
-            <div className="relative h-full rounded-xl border border-border bg-card p-6 transition-colors hover:border-accent/50">
-              <span className="font-mono text-[11px] text-accent">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <p className="mt-3 font-display text-base leading-snug tracking-tight">{step}</p>
-              {i < flow.length - 1 ? (
-                <span
-                  aria-hidden="true"
-                  className="absolute -bottom-3 left-6 text-accent/60 sm:right-4 sm:bottom-4 sm:left-auto"
-                >
-                  &darr;
-                </span>
-              ) : null}
-            </div>
-          </Reveal>
-        ))}
-      </div>
-
-      <Reveal>
-        <p className="mt-6 text-xs text-muted-foreground">
-          This is only an example. Every workflow is designed around the business it serves.
-        </p>
-      </Reveal>
-    </Section>
-  );
-}
-
 export function WhoWeWorkWith() {
   const who = [
     "Growing businesses",
