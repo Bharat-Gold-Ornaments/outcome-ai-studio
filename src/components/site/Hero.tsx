@@ -10,7 +10,7 @@ export function Hero() {
       <div className="relative mx-auto grid w-full max-w-6xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div>
           <Reveal>
-            <p className="text-eyebrow text-accent">Practical AI for Business</p>
+            <p className="text-eyebrow text-accent">AI Consulting &middot; Automation &middot; Training</p>
             <h1 className="mt-6 font-display text-[2.7rem] leading-[1.02] tracking-tight text-balance md:text-[4.25rem]">
               Practical AI for Business.
             </h1>
