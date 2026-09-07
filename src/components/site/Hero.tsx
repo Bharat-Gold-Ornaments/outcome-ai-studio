@@ -17,7 +17,7 @@ function SystemDiagram() {
   return (
     <div ref={ref} className="w-full">
       <svg
-        viewBox="0 0 900 260"
+        viewBox="0 0 960 260"
         role="img"
         aria-label="Diagram: Sales, Marketing and Customer Service feed into AI, then automation, producing business results"
         className={`h-auto w-full ${inView ? "is-live" : ""}`}
@@ -129,7 +129,7 @@ export function Hero() {
       <div className="mx-auto w-full max-w-6xl">
         <Kicker>AI Consulting &middot; Automation &middot; Training</Kicker>
 
-        <h1 className="mt-10 max-w-4xl font-display text-[3rem] leading-[0.96] tracking-[-0.03em] text-balance sm:text-[4.5rem] lg:text-[6.25rem]">
+        <h1 className="mt-10 max-w-4xl font-display text-[3rem] leading-[0.96] tracking-[-0.03em] text-balance sm:text-[4.5rem] lg:text-[5.5rem]">
           Practical AI.
           <br />
           <span className="text-muted-foreground">Built around your business.</span>

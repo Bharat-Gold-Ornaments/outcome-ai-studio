@@ -77,7 +77,7 @@ export function Band({
     <section
       id={id}
       className={cn(
-        "relative scroll-mt-24 px-6 py-28 md:px-10 md:py-40",
+        "relative scroll-mt-24 px-6 py-24 md:px-10 md:py-32",
         tone === "light" && "border-t border-border bg-background",
         tone === "dark" && "border-t border-ink bg-ink text-ink-foreground",
         className,

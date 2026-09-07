@@ -55,7 +55,7 @@ export function Approach() {
           aria-hidden="true"
           className="absolute top-2 bottom-2 left-[5px] w-px bg-gradient-to-b from-accent/70 via-ink-foreground/20 to-transparent md:left-[9px]"
         />
-        <div className="space-y-20 md:space-y-28">
+        <div className="space-y-16 md:space-y-24">
           {stages.map(([word, line], i) => (
             <Stage key={word} word={word} line={line} index={i} />
           ))}
