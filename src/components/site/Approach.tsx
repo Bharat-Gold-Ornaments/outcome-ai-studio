@@ -21,7 +21,7 @@ function Stage({ word, line, index }: { word: string; line: string; index: numbe
         }`}
       />
       <h3
-        className={`type-mega uppercase transition-all duration-700 ${
+        className={`type-stage uppercase transition-all duration-700 ${
           inView ? "translate-y-0 opacity-100" : "translate-y-3 opacity-30"
         }`}
       >
@@ -55,7 +55,7 @@ export function Approach() {
           aria-hidden="true"
           className="absolute top-2 bottom-2 left-[5px] w-px bg-gradient-to-b from-accent/70 via-ink-foreground/20 to-transparent md:left-[9px]"
         />
-        <div className="space-y-16 md:space-y-24">
+        <div className="space-y-10 md:space-y-14">
           {stages.map(([word, line], i) => (
             <Stage key={word} word={word} line={line} index={i} />
           ))}

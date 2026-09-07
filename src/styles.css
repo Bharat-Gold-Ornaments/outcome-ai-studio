@@ -137,10 +137,17 @@
 
 @utility type-mega {
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 5.4vw, 4.25rem);
+  font-size: clamp(2rem, 4.1vw, 3.25rem);
   line-height: 0.98;
   letter-spacing: -0.03em;
   text-wrap: balance;
+}
+
+@utility type-stage {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2.125rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 @utility type-item {
