@@ -141,3 +141,34 @@
     border-color: color-mix(in oklab, var(--color-accent) 40%, var(--color-border));
   }
 }
+
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes dash-run {
+  to { stroke-dashoffset: -40; }
+}
+
+@utility marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-x 32s linear infinite;
+}
+
+@utility float-slow {
+  animation: float-y 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .float-slow {
+    animation: none;
+  }
+}
