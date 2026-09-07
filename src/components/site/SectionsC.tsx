@@ -5,126 +5,125 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { CallCta, Reveal, Section, SectionHead } from "./primitives";
+import ctaNetwork from "@/assets/cta-network.jpg";
+
+const who = [
+  "Growing businesses",
+  "SMEs",
+  "Founder-led businesses",
+  "Sales-driven businesses",
+  "Customer-focused businesses",
+  "Teams adopting AI practically",
+];
 
 export function WhoWeWorkWith() {
-  const who = [
-    "Growing businesses",
-    "SMEs",
-    "Founder-led businesses",
-    "Sales-driven businesses",
-    "Customer-focused businesses",
-    "Teams looking to adopt AI practically",
-  ];
-
   return (
-    <Section id="about" tone="raised">
-      <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
-        <Reveal>
-          <SectionHead
-            eyebrow="Who we work with"
-            title="Built for businesses ready to put AI to work."
-            lead="We work with organisations that want AI applied to real processes — with clear priorities and measurable outcomes."
-          />
-        </Reveal>
-        <Reveal delay={100}>
-          <ul className="grid gap-3 sm:grid-cols-2">
-            {who.map((w) => (
-              <li
-                key={w}
-                className="rounded-xl border border-border bg-background px-5 py-4 text-sm text-foreground/85"
-              >
-                {w}
-              </li>
-            ))}
-          </ul>
-        </Reveal>
-      </div>
-    </Section>
-  );
-}
-
-export function EngagementModel() {
-  const stages = [
-    ["01", "Discovery Call", "Free initial conversation.", true],
-    ["02", "AI Consulting", "Business AI Audit and opportunity assessment.", false],
-    ["03", "AI Roadmap", "Prioritised implementation plan.", false],
-    ["04", "AI Automation", "Build and deploy selected systems.", false],
-    ["05", "AI Training", "Help the team adopt AI effectively.", false],
-    ["06", "AI Partnership", "Ongoing optimisation and new opportunities.", false],
-  ] as const;
-
-  return (
-    <Section id="engagement">
+    <Section id="about">
       <Reveal>
         <SectionHead
-          eyebrow="Engagement model"
-          title="Start with a conversation."
-          lead="Every business has different processes, systems and priorities. We start by understanding yours before recommending technology."
+          align="center"
+          eyebrow="Who we work with"
+          title="Built for businesses ready to put AI to work."
         />
       </Reveal>
 
-      <div className="mt-14 grid gap-6 md:grid-cols-3">
-        {stages.map(([no, title, body, free], i) => (
-          <Reveal key={no} delay={i * 80}>
-            <div
-              className={`surface-card h-full p-7 ${
-                free ? "border-accent bg-accent/5" : ""
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-[11px] text-accent">{no}</span>
-                <span
-                  className={`rounded-full px-2.5 py-1 font-mono text-[10px] tracking-[0.16em] uppercase ${
-                    free
-                      ? "bg-accent text-accent-foreground"
-                      : "border border-border text-muted-foreground"
-                  }`}
-                >
-                  {free ? "Free" : "Paid engagement"}
-                </span>
-              </div>
-              <h3 className="mt-4 font-display text-xl tracking-tight">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-
-      <Reveal>
-        <div className="mt-12 flex flex-col items-start gap-4 border-t border-border pt-10 sm:flex-row sm:items-center sm:justify-between">
-          <p className="max-w-lg text-sm text-muted-foreground">
-            The Discovery Call is free and carries no obligation. Let's understand your business and
-            explore where AI could create real value.
-          </p>
-          <CallCta />
+      <Reveal delay={100}>
+        <div className="mt-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+          <div className="marquee-track gap-4">
+            {[...who, ...who, ...who, ...who].map((w, i) => (
+              <span
+                key={`${w}-${i}`}
+                className="rounded-full border border-border bg-card px-6 py-3 text-sm whitespace-nowrap text-foreground/85"
+              >
+                {w}
+              </span>
+            ))}
+          </div>
         </div>
       </Reveal>
     </Section>
   );
 }
 
+export function EngagementModel() {
+  const stages = [
+    ["01", "Discovery Call", "A free, no-obligation conversation.", true],
+    ["02", "Consulting & Roadmap", "Opportunities identified and prioritised.", false],
+    ["03", "Automation & Training", "Systems built, teams enabled.", false],
+    ["04", "Ongoing Partnership", "Improve and extend over time.", false],
+  ] as const;
+
+  return (
+    <Section id="engagement" tone="raised">
+      <Reveal>
+        <SectionHead
+          eyebrow="How it works"
+          title="Start with a conversation."
+          lead="We understand your business first, then recommend technology."
+        />
+      </Reveal>
+
+      <div className="relative mt-14">
+        <div
+          aria-hidden="true"
+          className="absolute top-6 left-6 hidden h-px w-[calc(100%-3rem)] bg-gradient-to-r from-accent/60 to-border md:block"
+        />
+        <div className="grid gap-8 md:grid-cols-4">
+          {stages.map(([no, title, body, free], i) => (
+            <Reveal key={no} delay={i * 110}>
+              <div className="group relative">
+                <span
+                  className={`relative z-10 flex h-12 w-12 items-center justify-center rounded-full border font-mono text-[11px] transition-transform duration-300 group-hover:scale-110 ${
+                    free
+                      ? "border-accent bg-accent text-accent-foreground"
+                      : "border-border bg-background text-accent"
+                  }`}
+                >
+                  {no}
+                </span>
+                <h3 className="mt-5 font-display text-lg tracking-tight">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
+                {free ? (
+                  <span className="mt-3 inline-block rounded-full bg-accent/10 px-2.5 py-1 font-mono text-[10px] tracking-[0.16em] text-accent uppercase">
+                    Free
+                  </span>
+                ) : null}
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 export function FinalCta() {
   return (
-    <Section id="book" tone="ink">
+    <div id="book" className="relative isolate overflow-hidden border-t border-ink bg-ink px-6 py-24 text-ink-foreground md:px-10 md:py-32">
+      <img
+        src={ctaNetwork}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        width={1920}
+        height={720}
+        className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-60"
+      />
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
           <p className="text-eyebrow text-accent-soft">Next step</p>
           <h2 className="mt-6 font-display text-3xl leading-[1.08] tracking-tight text-balance md:text-5xl">
-            Your business already has processes. Let's find out which ones AI can improve.
+            Let's find out which of your processes AI can improve.
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink-foreground/75">
-            Start with a conversation about your business, your challenges and where AI could create
-            measurable value.
-          </p>
           <div className="mt-9 flex justify-center">
             <CallCta variant="light" />
           </div>
           <p className="mt-5 text-xs text-ink-foreground/60">
-            No commitment. Just a conversation about where AI could create value in your business.
+            No commitment. Just a conversation about where AI could create value.
           </p>
         </Reveal>
       </div>
-    </Section>
+    </div>
   );
 }
 
@@ -135,37 +134,25 @@ const faqs = [
   ],
   [
     "Do I need to already use AI?",
-    "No. We can start from where you are and identify practical opportunities based on your current processes and tools.",
+    "No. We start from where you are and identify practical opportunities based on your current processes and tools.",
   ],
   [
     "Do you only work with large companies?",
     "No. The approach is designed for businesses that want to adopt AI practically, including growing businesses and SMEs.",
   ],
   [
-    "Do you build custom AI automations?",
-    "Yes. After identifying and prioritising an opportunity, we can design and implement AI-powered workflows around the business's specific requirements.",
-  ],
-  [
     "Can you work with our existing software?",
-    "Where technically appropriate, we can work with existing tools, software and APIs rather than requiring the business to replace everything.",
-  ],
-  [
-    "Do you provide team training?",
-    "Yes. Training can be designed for executives, teams or specific roles such as Sales, Marketing and Customer Service.",
-  ],
-  [
-    "Do you provide ongoing support?",
-    "Yes. Ongoing AI partnership can include monitoring, optimisation, new workflows, training and continuous improvement.",
+    "Where technically appropriate, we work with your existing tools, software and APIs rather than replacing everything.",
   ],
   [
     "What happens after the Discovery Call?",
-    "If there is a clear opportunity, we can recommend an AI Business Audit or consulting engagement. There is no requirement to proceed.",
+    "If there is a clear opportunity, we can recommend a consulting engagement. There is no requirement to proceed.",
   ],
 ] as const;
 
 export function Faq() {
   return (
-    <Section id="faq" tone="raised">
+    <Section id="faq">
       <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
         <Reveal>
           <SectionHead eyebrow="FAQ" title="Questions, answered." />
