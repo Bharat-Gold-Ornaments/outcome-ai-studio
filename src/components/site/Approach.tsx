@@ -21,7 +21,7 @@ function Stage({ word, line, index }: { word: string; line: string; index: numbe
         }`}
       />
       <h3
-        className={`font-display text-[2.75rem] leading-[0.95] tracking-[-0.03em] uppercase transition-all duration-700 md:text-[5rem] ${
+        className={`type-mega uppercase transition-all duration-700 ${
           inView ? "translate-y-0 opacity-100" : "translate-y-3 opacity-30"
         }`}
       >
@@ -45,7 +45,7 @@ export function Approach() {
     <Band id="approach" tone="dark">
       <Reveal>
         <Kicker>Approach</Kicker>
-        <h2 className="mt-8 max-w-2xl font-display text-[2.25rem] leading-[1.02] tracking-[-0.02em] text-balance md:text-5xl">
+        <h2 className="mt-8 max-w-2xl type-section">
           One journey, six stages.
         </h2>
       </Reveal>
