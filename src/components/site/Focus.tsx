@@ -26,7 +26,7 @@ export function Focus() {
     <Band id="work">
       <Reveal>
         <Kicker>Focus</Kicker>
-        <h2 className="mt-8 max-w-3xl font-display text-[2.25rem] leading-[1.02] tracking-[-0.02em] text-balance md:text-6xl">
+        <h2 className="mt-8 max-w-3xl type-section">
           AI should work where your business works.
         </h2>
       </Reveal>
@@ -46,7 +46,7 @@ export function Focus() {
               >
                 <div className="grid items-baseline gap-6 md:grid-cols-[6rem_1fr_18rem]">
                   <span className="font-mono text-xs text-accent">{a.no}</span>
-                  <h3 className="font-display text-[2.5rem] leading-[0.98] tracking-[-0.03em] uppercase transition-transform duration-500 group-hover:translate-x-2 md:text-[4.25rem]">
+                  <h3 className="type-mega uppercase transition-transform duration-500 group-hover:translate-x-2">
                     {a.name}
                   </h3>
                   <ul

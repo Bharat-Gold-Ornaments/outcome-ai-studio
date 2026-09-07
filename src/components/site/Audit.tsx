@@ -15,7 +15,7 @@ export function Audit() {
     <Band id="audit">
       <Reveal>
         <Kicker>AI audit</Kicker>
-        <h2 className="mt-8 max-w-3xl font-display text-[2.25rem] leading-[1.02] tracking-[-0.02em] text-balance md:text-6xl">
+        <h2 className="mt-8 max-w-3xl type-section">
           A process in. An opportunity map out.
         </h2>
       </Reveal>
@@ -82,7 +82,7 @@ export function Audit() {
       </div>
 
       <Reveal>
-        <p className="mt-14 max-w-md text-sm text-muted-foreground">
+        <p className="mt-12 max-w-md type-lead text-muted-foreground">
           We find where AI creates value &mdash; and where it shouldn't be used.
         </p>
       </Reveal>

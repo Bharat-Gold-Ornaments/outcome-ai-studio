@@ -129,13 +129,13 @@ export function Hero() {
       <div className="mx-auto w-full max-w-6xl">
         <Kicker>AI Consulting &middot; Automation &middot; Training</Kicker>
 
-        <h1 className="mt-10 max-w-4xl font-display text-[3rem] leading-[0.96] tracking-[-0.03em] text-balance sm:text-[4.5rem] lg:text-[5.5rem]">
+        <h1 className="mt-10 max-w-4xl type-hero">
           Practical AI.
           <br />
           <span className="text-muted-foreground">Built around your business.</span>
         </h1>
 
-        <p className="mt-10 max-w-xl text-lg leading-relaxed text-muted-foreground">
+        <p className="mt-8 max-w-xl type-lead text-muted-foreground">
           We identify the right opportunities, build the systems and help your team put them to
           work.
         </p>

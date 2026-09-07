@@ -24,10 +24,10 @@ export function WorkflowDemo() {
     <Band id="workflow" tone="dark">
       <Reveal>
         <Kicker>Live example</Kicker>
-        <h2 className="mt-8 max-w-3xl font-display text-[2.25rem] leading-[1.02] tracking-[-0.02em] text-balance md:text-6xl">
+        <h2 className="mt-8 max-w-3xl type-section">
           What could AI change in your business?
         </h2>
-        <p className="mt-6 max-w-md text-sm text-ink-foreground/60">
+        <p className="mt-6 max-w-md type-lead text-ink-foreground/60">
           Hover a stage. One enquiry, six moments &mdash; some automated, some assisted, some
           entirely human.
         </p>

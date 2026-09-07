@@ -11,12 +11,12 @@ export function FinalCta() {
     <Band id="book" tone="dark">
       <div className="mx-auto max-w-4xl">
         <Reveal>
-          <h2 className="font-display text-[2.5rem] leading-[0.98] tracking-[-0.03em] text-balance md:text-[4.75rem]">
+          <h2 className="type-mega">
             Where could AI make a difference in your business?
           </h2>
         </Reveal>
         <Reveal delay={180}>
-          <p className="mt-8 font-display text-2xl text-accent">Let's find out.</p>
+          <p className="mt-8 font-display text-xl tracking-tight text-accent md:text-2xl">Let's find out.</p>
           <div className="mt-12">
             <CallCta variant="light" />
           </div>

@@ -18,10 +18,10 @@ export function Services() {
           <Reveal key={no} delay={i * 100}>
             <div className="group grid items-baseline gap-2 border-b border-border py-10 md:grid-cols-[5rem_1fr_1fr] md:gap-8 md:py-14">
               <span className="font-mono text-xs text-accent">{no}</span>
-              <h3 className="font-display text-[2rem] leading-[1] tracking-[-0.02em] uppercase md:text-[3.25rem]">
+              <h3 className="type-item uppercase">
                 {name}
               </h3>
-              <p className="font-display text-xl text-muted-foreground transition-colors duration-500 group-hover:text-foreground md:text-2xl">
+              <p className="font-display text-lg tracking-tight text-muted-foreground transition-colors duration-500 group-hover:text-foreground md:text-xl">
                 {line}
               </p>
             </div>
@@ -30,7 +30,7 @@ export function Services() {
       </div>
 
       <Reveal>
-        <p className="mt-10 max-w-md text-sm text-muted-foreground">
+        <p className="mt-10 max-w-md type-lead text-muted-foreground">
           From identifying the opportunity to putting AI into everyday business use.
         </p>
       </Reveal>
@@ -43,10 +43,10 @@ export function Partnership() {
     <Band id="about">
       <div className="grid gap-12 md:grid-cols-[1.1fr_0.9fr] md:items-end">
         <Reveal>
-          <h2 className="max-w-lg font-display text-[2rem] leading-[1.04] tracking-[-0.02em] text-balance md:text-5xl">
+          <h2 className="max-w-lg type-section">
             AI doesn't end at implementation.
           </h2>
-          <p className="mt-6 max-w-sm text-sm text-muted-foreground">
+          <p className="mt-6 max-w-sm type-lead text-muted-foreground">
             Businesses evolve. AI evolves. Your systems should too.
           </p>
         </Reveal>
