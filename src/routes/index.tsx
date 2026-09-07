@@ -2,17 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { site } from "@/config/site";
 import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
-import { Problem, WhatWeDo, FocusAreas, HowItWorks } from "@/components/site/SectionsA";
+import { Problem, WhatWeDo, FocusAreas } from "@/components/site/SectionsA";
 import {
-  ConsultingDeepDive,
-  BusinessAudit,
-  Roadmap,
-  Automation,
-  Training,
-  Partnership,
-} from "@/components/site/SectionsB";
-import {
-  ExampleWorkflow,
   WhoWeWorkWith,
   EngagementModel,
   FinalCta,
@@ -77,14 +68,6 @@ function Index() {
         <Problem />
         <WhatWeDo />
         <FocusAreas />
-        <HowItWorks />
-        <ConsultingDeepDive />
-        <BusinessAudit />
-        <Roadmap />
-        <Automation />
-        <Training />
-        <Partnership />
-        <ExampleWorkflow />
         <WhoWeWorkWith />
         <EngagementModel />
         <FinalCta />
