@@ -2,18 +2,17 @@ import { createFileRoute } from "@tanstack/react-router";
 import { site } from "@/config/site";
 import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
-import { Problem, WhatWeDo, FocusAreas } from "@/components/site/SectionsA";
-import {
-  WhoWeWorkWith,
-  EngagementModel,
-  FinalCta,
-  Faq,
-  faqs,
-} from "@/components/site/SectionsC";
+import { Focus } from "@/components/site/Focus";
+import { Approach } from "@/components/site/Approach";
+import { Audit } from "@/components/site/Audit";
+import { WorkflowDemo } from "@/components/site/WorkflowDemo";
+import { Statement } from "@/components/site/Statement";
+import { Services, Partnership } from "@/components/site/Services";
+import { FinalCta, Faq, faqs } from "@/components/site/Close";
 import { Footer } from "@/components/site/Footer";
 
 const title = `Practical AI for Business | ${site.businessName}`;
-const description = `${site.businessName} helps businesses identify, implement and improve practical AI systems across Sales, Marketing and Customer Service.`;
+const description = `${site.businessName} identifies where AI creates value, builds the systems and helps teams adopt them — across Sales, Marketing and Customer Service.`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -65,11 +64,13 @@ function Index() {
       <Nav />
       <main>
         <Hero />
-        <Problem />
-        <WhatWeDo />
-        <FocusAreas />
-        <WhoWeWorkWith />
-        <EngagementModel />
+        <Focus />
+        <Approach />
+        <Audit />
+        <WorkflowDemo />
+        <Statement />
+        <Services />
+        <Partnership />
         <FinalCta />
         <Faq />
       </main>
