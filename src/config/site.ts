@@ -2,8 +2,9 @@
  * EDIT THESE VALUES — they are used everywhere on the site.
  */
 export const site = {
-  businessName: "[BUSINESS NAME]",
-  logo: "[LOGO]", // replace with an <img src="..."> asset if desired
+  businessName: "Sangodkar Advisory",
+  logo: "SA", // monogram shown in the header mark
+
   email: "[EMAIL]",
   phone: "[PHONE]",
   calendlyUrl: "[CALENDLY_URL]",

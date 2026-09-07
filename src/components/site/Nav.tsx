@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { site } from "@/config/site";
 import { CallCta } from "./primitives";
+import { Logo } from "./Logo";
 
 const links = [
   { href: "#work", label: "Work" },
@@ -34,13 +35,12 @@ export function Nav() {
         }`}
       >
         <a href="#top" className="flex items-center gap-3">
-          <span className="font-mono text-[10px] tracking-[0.1em] text-accent">
-            {site.logo === "[LOGO]" ? "[LOGO]" : site.logo}
-          </span>
+          <Logo className="h-8 w-8 shrink-0" />
           <span className="font-display text-sm tracking-[0.14em] uppercase">
             {site.businessName}
           </span>
         </a>
+
 
         <ul className="hidden items-center gap-10 lg:flex">
           {links.map((l) => (
