@@ -82,7 +82,7 @@ export function Audit() {
       </div>
 
       <Reveal>
-        <p className="mt-14 max-w-md text-sm text-muted-foreground">
+        <p className="mt-12 max-w-md type-lead text-muted-foreground">
           We find where AI creates value &mdash; and where it shouldn't be used.
         </p>
       </Reveal>

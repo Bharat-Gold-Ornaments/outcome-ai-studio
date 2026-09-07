@@ -15,7 +15,7 @@ export function Statement() {
           </h2>
         </Reveal>
         <Reveal delay={380}>
-          <p className="mt-12 max-w-md text-sm leading-relaxed text-ink-foreground/60">
+          <p className="mt-10 max-w-md type-lead text-ink-foreground/60">
             Good AI strategy isn't about using more AI. It's about knowing where AI can genuinely
             improve the business.
           </p>

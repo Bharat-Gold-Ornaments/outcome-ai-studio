@@ -135,7 +135,7 @@ export function Hero() {
           <span className="text-muted-foreground">Built around your business.</span>
         </h1>
 
-        <p className="mt-10 max-w-xl text-lg leading-relaxed text-muted-foreground">
+        <p className="mt-8 max-w-xl type-lead text-muted-foreground">
           We identify the right opportunities, build the systems and help your team put them to
           work.
         </p>

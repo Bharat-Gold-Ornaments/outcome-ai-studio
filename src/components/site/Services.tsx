@@ -21,7 +21,7 @@ export function Services() {
               <h3 className="type-item uppercase">
                 {name}
               </h3>
-              <p className="font-display text-xl text-muted-foreground transition-colors duration-500 group-hover:text-foreground md:text-2xl">
+              <p className="font-display text-lg tracking-tight text-muted-foreground transition-colors duration-500 group-hover:text-foreground md:text-xl">
                 {line}
               </p>
             </div>
@@ -30,7 +30,7 @@ export function Services() {
       </div>
 
       <Reveal>
-        <p className="mt-10 max-w-md text-sm text-muted-foreground">
+        <p className="mt-10 max-w-md type-lead text-muted-foreground">
           From identifying the opportunity to putting AI into everyday business use.
         </p>
       </Reveal>
@@ -46,7 +46,7 @@ export function Partnership() {
           <h2 className="max-w-lg type-section">
             AI doesn't end at implementation.
           </h2>
-          <p className="mt-6 max-w-sm text-sm text-muted-foreground">
+          <p className="mt-6 max-w-sm type-lead text-muted-foreground">
             Businesses evolve. AI evolves. Your systems should too.
           </p>
         </Reveal>
