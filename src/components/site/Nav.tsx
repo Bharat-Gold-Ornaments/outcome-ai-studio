@@ -4,12 +4,12 @@ import { site } from "@/config/site";
 import { CallCta } from "./primitives";
 
 const links = [
-  { href: "#how-it-works", label: "How It Works" },
   { href: "#what-we-do", label: "What We Do" },
   { href: "#use-cases", label: "Use Cases" },
   { href: "#about", label: "About" },
   { href: "#faq", label: "FAQ" },
 ];
+
 
 export function Nav() {
   const [open, setOpen] = useState(false);
