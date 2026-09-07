@@ -17,7 +17,7 @@ function SystemDiagram() {
   return (
     <div ref={ref} className="w-full">
       <svg
-        viewBox="0 0 960 260"
+        viewBox="0 0 1010 260"
         role="img"
         aria-label="Diagram: Sales, Marketing and Customer Service feed into AI, then automation, producing business results"
         className={`h-auto w-full ${inView ? "is-live" : ""}`}
