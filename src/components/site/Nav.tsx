@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { site } from "@/config/site";
 import { CallCta } from "./primitives";
+import { Logo } from "./Logo";
 
 const links = [
   { href: "#work", label: "Work" },

@@ -1,11 +1,15 @@
 import { site } from "@/config/site";
+import { Logo } from "./Logo";
 
 export function Footer() {
   return (
     <footer className="border-t border-border bg-background px-6 py-14 md:px-10">
       <div className="mx-auto grid w-full max-w-6xl gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <p className="font-display text-lg tracking-tight">{site.businessName}</p>
+          <div className="flex items-center gap-3">
+            <Logo className="h-8 w-8 shrink-0" />
+            <p className="font-display text-lg tracking-tight">{site.businessName}</p>
+          </div>
           <p className="mt-2 text-sm text-muted-foreground">Practical AI for Business.</p>
           <p className="mt-5 font-mono text-[11px] tracking-[0.16em] uppercase text-muted-foreground">
             AI Consulting &bull; AI Automation &bull; AI Training
