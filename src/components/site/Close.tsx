@@ -11,12 +11,12 @@ export function FinalCta() {
     <Band id="book" tone="dark">
       <div className="mx-auto max-w-4xl">
         <Reveal>
-          <h2 className="type-mega">
-            Where could AI make a difference in your business?
-          </h2>
+          <h2 className="type-mega">Where could AI make a difference in your business?</h2>
         </Reveal>
         <Reveal delay={180}>
-          <p className="mt-8 font-display text-xl tracking-tight text-accent md:text-2xl">Let's find out.</p>
+          <p className="mt-8 font-display text-xl tracking-tight text-accent md:text-2xl">
+            Let's find out.
+          </p>
           <div className="mt-12">
             <CallCta variant="light" />
           </div>
@@ -27,9 +27,16 @@ export function FinalCta() {
 }
 
 const faqs = [
-  ["What is an AI Discovery Call?", "A short conversation about your business and where AI could help."],
+  [
+    "What is an AI Discovery Call?",
+    "A short conversation about your business and where AI could help.",
+  ],
   ["Do I need to use AI already?", "No. We start from where you are."],
   ["Can you work with our existing tools?", "Yes, wherever it's technically sensible."],
+  [
+    "Do you only work with Hospitality, Healthcare, Gems & Jewellery and Real Estate?",
+    "Those are our core industries, but the same approach applies wherever AI can genuinely improve the business.",
+  ],
 ] as const;
 
 export function Faq() {

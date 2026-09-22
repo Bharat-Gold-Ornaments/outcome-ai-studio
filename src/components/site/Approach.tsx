@@ -13,7 +13,10 @@ function Stage({ word, line, index }: { word: string; line: string; index: numbe
   const [ref, inView] = useInView<HTMLDivElement>({ threshold: 0.5 });
 
   return (
-    <div ref={ref} className="relative grid gap-4 pl-10 md:grid-cols-[1fr_20rem] md:items-end md:gap-12 md:pl-16">
+    <div
+      ref={ref}
+      className="relative grid gap-4 pl-10 md:grid-cols-[1fr_20rem] md:items-end md:gap-12 md:pl-16"
+    >
       <span
         aria-hidden="true"
         className={`absolute top-6 left-0 h-2.5 w-2.5 rounded-full transition-all duration-700 md:left-1 ${
@@ -45,9 +48,7 @@ export function Approach() {
     <Band id="approach" tone="dark">
       <Reveal>
         <Kicker>Approach</Kicker>
-        <h2 className="mt-8 max-w-2xl type-section">
-          One journey, six stages.
-        </h2>
+        <h2 className="mt-8 max-w-2xl type-section">One journey, six stages.</h2>
       </Reveal>
 
       <div className="relative mt-24">

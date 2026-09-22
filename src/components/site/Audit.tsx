@@ -1,6 +1,13 @@
 import { Band, Kicker, Reveal, useInView } from "./primitives";
 
-const messy = ["Manual work", "Emails", "Messages", "Spreadsheets", "Follow-ups", "Repetitive tasks"];
+const messy = [
+  "Manual work",
+  "Emails",
+  "Messages",
+  "Spreadsheets",
+  "Follow-ups",
+  "Repetitive tasks",
+];
 const map = [
   ["Automate", "Repetitive, rule-based"],
   ["Assist", "Human, with support"],
@@ -15,12 +22,13 @@ export function Audit() {
     <Band id="audit">
       <Reveal>
         <Kicker>AI audit</Kicker>
-        <h2 className="mt-8 max-w-3xl type-section">
-          A process in. An opportunity map out.
-        </h2>
+        <h2 className="mt-8 max-w-3xl type-section">A process in. An opportunity map out.</h2>
       </Reveal>
 
-      <div ref={ref} className="mt-20 grid gap-14 lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-8">
+      <div
+        ref={ref}
+        className="mt-20 grid gap-14 lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-8"
+      >
         <div>
           <p className="text-eyebrow text-muted-foreground">Business process</p>
           <div className="mt-6 flex flex-wrap gap-2">

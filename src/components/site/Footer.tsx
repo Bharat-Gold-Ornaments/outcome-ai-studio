@@ -1,4 +1,6 @@
 import { site } from "@/config/site";
+import { serviceCategories } from "@/config/services";
+import { industries } from "@/config/industries";
 import { Logo } from "./Logo";
 
 export function Footer() {
@@ -8,14 +10,14 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-3">
             <Logo className="h-8 w-8 shrink-0" />
-            <p className="font-display text-lg tracking-tight">{site.businessName}</p>
+            <p className="font-display text-lg font-semibold tracking-tight">{site.businessName}</p>
           </div>
-          <p className="mt-2 text-sm text-muted-foreground">Practical AI for Business.</p>
-          <p className="mt-5 font-mono text-[11px] tracking-[0.16em] uppercase text-muted-foreground">
-            AI Consulting &bull; AI Automation &bull; AI Training
+          <p className="mt-2 text-sm text-muted-foreground">{site.tagline}.</p>
+          <p className="mt-5 text-[11px] font-semibold tracking-[0.14em] uppercase text-muted-foreground">
+            {serviceCategories.map((c) => c.name).join(" • ")}
           </p>
-          <p className="mt-2 font-mono text-[11px] tracking-[0.16em] uppercase text-accent">
-            Sales &bull; Marketing &bull; Customer Service
+          <p className="mt-2 text-[11px] font-semibold tracking-[0.14em] uppercase text-accent">
+            {industries.map((i) => i.name).join(" • ")}
           </p>
         </div>
 

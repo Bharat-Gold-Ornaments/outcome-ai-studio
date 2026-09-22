@@ -5,14 +5,10 @@ export function Statement() {
     <Band tone="dark">
       <div className="mx-auto max-w-4xl">
         <Reveal>
-          <h2 className="type-mega">
-            Don't automate everything.
-          </h2>
+          <h2 className="type-mega">Don't automate everything.</h2>
         </Reveal>
         <Reveal delay={200}>
-          <h2 className="mt-4 type-mega text-accent">
-            Automate what matters.
-          </h2>
+          <h2 className="mt-4 type-mega text-accent">Automate what matters.</h2>
         </Reveal>
         <Reveal delay={380}>
           <p className="mt-10 max-w-md type-lead text-ink-foreground/60">

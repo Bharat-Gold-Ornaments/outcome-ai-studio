@@ -88,7 +88,13 @@ export function Band({
   );
 }
 
-export function Kicker({ children, tone = "accent" }: { children: ReactNode; tone?: "accent" | "muted" }) {
+export function Kicker({
+  children,
+  tone = "accent",
+}: {
+  children: ReactNode;
+  tone?: "accent" | "muted";
+}) {
   return (
     <p
       className={cn(
@@ -118,8 +124,10 @@ export function CallCta({
       rel="noopener noreferrer"
       className={cn(
         "group inline-flex min-h-12 items-center gap-3 px-6 text-sm font-medium tracking-tight transition-colors duration-300",
-        variant === "solid" && "rounded-full bg-ink text-ink-foreground hover:bg-accent",
-        variant === "light" && "rounded-full bg-ink-foreground text-ink hover:bg-accent hover:text-ink-foreground",
+        variant === "solid" &&
+          "rounded-full bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground",
+        variant === "light" &&
+          "rounded-full bg-ink-foreground text-ink hover:bg-accent hover:text-accent-foreground",
         variant === "quiet" && "px-0 text-foreground hover:text-accent",
         className,
       )}

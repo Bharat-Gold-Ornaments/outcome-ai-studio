@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { site } from "@/config/site";
+import { serviceCategories } from "@/config/services";
+import { industries } from "@/config/industries";
 import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
-import { Focus } from "@/components/site/Focus";
+import { Industries } from "@/components/site/Industries";
 import { Approach } from "@/components/site/Approach";
 import { Audit } from "@/components/site/Audit";
 import { WorkflowDemo } from "@/components/site/WorkflowDemo";
@@ -11,8 +13,8 @@ import { Services, Partnership } from "@/components/site/Services";
 import { FinalCta, Faq, faqs } from "@/components/site/Close";
 import { Footer } from "@/components/site/Footer";
 
-const title = `Practical AI for Business | ${site.businessName}`;
-const description = `${site.businessName} identifies where AI creates value, builds the systems and helps teams adopt them — across Sales, Marketing and Customer Service.`;
+const title = `${site.tagline} | ${site.businessName}`;
+const description = `${site.businessName} — ${site.tagline.toLowerCase()}, built on the best automation stack. Serving Hospitality, Healthcare, Gems & Jewellery and Real Estate.`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -40,7 +42,11 @@ export const Route = createFileRoute("/")({
               telephone: site.phone,
               url: "/",
               areaServed: "Worldwide",
-              serviceType: ["AI Consulting", "AI Automation", "AI Training"],
+              serviceType: serviceCategories.map((c) => c.name),
+              audience: industries.map((i) => ({
+                "@type": "Audience",
+                audienceType: i.name,
+              })),
             },
             {
               "@type": "FAQPage",
@@ -64,7 +70,7 @@ function Index() {
       <Nav />
       <main>
         <Hero />
-        <Focus />
+        <Industries />
         <Approach />
         <Audit />
         <WorkflowDemo />

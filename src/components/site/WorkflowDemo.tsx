@@ -24,9 +24,7 @@ export function WorkflowDemo() {
     <Band id="workflow" tone="dark">
       <Reveal>
         <Kicker>Live example</Kicker>
-        <h2 className="mt-8 max-w-3xl type-section">
-          What could AI change in your business?
-        </h2>
+        <h2 className="mt-8 max-w-3xl type-section">What could AI change in your business?</h2>
         <p className="mt-6 max-w-md type-lead text-ink-foreground/60">
           Hover a stage. One enquiry, six moments &mdash; some automated, some assisted, some
           entirely human.

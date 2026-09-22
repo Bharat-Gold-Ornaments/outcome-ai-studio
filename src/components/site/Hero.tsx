@@ -1,3 +1,4 @@
+import { site } from "@/config/site";
 import { CallCta, Kicker, useInView } from "./primitives";
 
 function SystemDiagram() {
@@ -56,7 +57,14 @@ function SystemDiagram() {
 
           {/* AI core */}
           <g className="node" style={{ ["--d" as string]: "760ms" }}>
-            <circle cx="440" cy="130" r="44" fill="none" stroke="currentColor" strokeOpacity="0.2" />
+            <circle
+              cx="440"
+              cy="130"
+              r="44"
+              fill="none"
+              stroke="currentColor"
+              strokeOpacity="0.2"
+            />
             <circle
               cx="440"
               cy="130"
@@ -108,7 +116,14 @@ function SystemDiagram() {
                 strokeWidth="1"
               />
               <g className="node" style={{ ["--d" as string]: `${1240 + i * 140}ms` }}>
-                <text x="756" y={r.y} fill="currentColor" fillOpacity="0.6" fontSize="11" letterSpacing="1.6">
+                <text
+                  x="756"
+                  y={r.y}
+                  fill="currentColor"
+                  fillOpacity="0.6"
+                  fontSize="11"
+                  letterSpacing="1.6"
+                >
                   {r.label.toUpperCase()}
                 </text>
               </g>
@@ -127,27 +142,32 @@ export function Hero() {
       className="relative flex min-h-[82vh] flex-col justify-center px-6 pt-16 pb-14 md:px-10"
     >
       <div className="mx-auto w-full max-w-6xl">
-        <Kicker>AI Consulting &middot; Automation &middot; Training</Kicker>
+        <Kicker>
+          Advisory &middot; AI &amp; Automation &middot; Implementation &middot; Training &middot;
+          Managed AI
+        </Kicker>
 
-        <h1 className="mt-10 max-w-4xl type-hero">
-          Practical AI.
-          <br />
-          <span className="text-muted-foreground">Built around your business.</span>
-        </h1>
+        <h1 className="mt-10 max-w-4xl type-hero">{site.tagline}</h1>
+        <p className="mt-5 max-w-2xl font-display text-xl font-semibold tracking-tight text-accent md:text-2xl">
+          {site.subTagline}.
+        </p>
 
         <p className="mt-8 max-w-xl type-lead text-muted-foreground">
-          We identify the right opportunities, build the systems and help your team put them to
-          work.
+          We help Hospitality, Healthcare, Gems &amp; Jewellery and Real Estate businesses find the
+          right AI opportunities, build the systems and put them to work.
         </p>
 
         <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4">
           <CallCta />
           <a
-            href="#work"
+            href="#industries"
             className="group inline-flex items-center gap-3 text-sm font-medium tracking-tight transition-colors hover:text-accent"
           >
             Explore
-            <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-y-1">
+            <span
+              aria-hidden="true"
+              className="transition-transform duration-300 group-hover:translate-y-1"
+            >
               &darr;
             </span>
           </a>
